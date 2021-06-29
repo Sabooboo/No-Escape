@@ -17,6 +17,9 @@ namespace No_Escape.Configuration.Controllers
         private readonly PauseController pauseController;
         private PauseMenuManager pauseMenuManager;
 
+        private string disableButton => PluginConfig.Instance.DisableButton;
+
+
         public MenuButtonDisabler(PauseController pauseController, PauseMenuManager pauseMenuManager)
         {
             this.pauseController = pauseController;
@@ -30,17 +33,24 @@ namespace No_Escape.Configuration.Controllers
 
         private void PauseController_didPauseEvent()
         {
-            DisableMenu();
+            DisableButton();
         }
 
-        private void DisableMenu()
+        private void DisableButton()
         {
             // Somewhere right now PixelBoom is dying reading this. this is not good code. if you want to see Pog and Epic code for button disables look at PauseChamp :D
             Transform buttons = pauseMenuManager.transform.Find("Wrapper").transform.Find("MenuWrapper").transform.Find("Canvas").transform.Find("MainBar").transform.Find("Buttons");
             GameObject menuButton = buttons.GetChild(0).gameObject;
-            menuButton.GetComponent<NoTransitionsButton>().interactable = false;
-
-
+            GameObject continueButton = buttons.GetChild(2).gameObject;
+            switch(disableButton)
+            {
+                case "Menu":
+                    menuButton.GetComponent<NoTransitionsButton>().interactable = false;
+                    break;
+                case "Continue":
+                    continueButton.GetComponent<NoTransitionsButton>().interactable = false;
+                    break;
+            }
         }
 
         public void Dispose()

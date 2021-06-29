@@ -1,4 +1,4 @@
-﻿/*
+﻿
 using System.Runtime.CompilerServices;
 using IPA.Config.Stores;
 
@@ -8,7 +8,7 @@ namespace No_Escape.Configuration
     internal class PluginConfig
     {
         public static PluginConfig Instance { get; set; }
-        public virtual int IntValue { get; set; } = 42; // Must be 'virtual' if you want BSIPA to detect a value change and save the config automatically.
+        public virtual string DisableButton { get; set; } = "Menu"; // Must be 'virtual' if you want BSIPA to detect a value change and save the config automatically.
 
         /// <summary>
         /// This is called whenever BSIPA reads the config from disk (including when file changes are detected).
@@ -35,4 +35,3 @@ namespace No_Escape.Configuration
         }
     }
 }
-*/

@@ -114,9 +114,11 @@
   <ItemGroup>
     <Compile Include="Controllers\MenuButtonDisabler.cs" />
     <Compile Include="Installers\PauseMenuInstaller.cs" />
+    <Compile Include="Installers\SettingsInstaller.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Configuration\PluginConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\ViewControllers\ModSettingsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="manifest.json" />
@@ -125,6 +127,7 @@
     <None Include="Directory.Build.props" Condition="Exists('Directory.Build.props')" />
     <None Include="Directory.Build.targets" Condition="Exists('Directory.Build.targets')" />
     <None Include="No_Escape.csproj.user" Condition="Exists('No_Escape.csproj.user')" />
+    <EmbeddedResource Include="UI\Views\ModSettings.bsml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BeatSaberModdingTools.Tasks">
